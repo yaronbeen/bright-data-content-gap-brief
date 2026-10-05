@@ -1,0 +1,5 @@
+skills/gap-to-writer-assignment/SKILL.md
+docs/skills/gap-to-writer-assignment-example.md
+docs/skills/validation.md
+docs/skills/review-manifest.txt
+README.md
