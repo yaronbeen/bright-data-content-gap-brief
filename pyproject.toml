@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools==81.0.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "content-gap-brief"
+version = "0.1.0"
+description = "Create deterministic, cited content gap briefs from selected page snapshots."
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = "MIT"
+authors = [{name = "Yaron Been"}]
+classifiers = ["Programming Language :: Python :: 3.11", "Programming Language :: Python :: 3.12"]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest==9.0.2"]
+
+[project.scripts]
+content-gap-brief = "content_gap_brief.cli:main"
+
+[tool.setuptools]
+packages = ["content_gap_brief"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

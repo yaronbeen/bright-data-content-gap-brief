@@ -1,0 +1,5 @@
+question_id,question,question_origin,source_id,source_role,coverage_state,coverage_method,matched_answer_phrase,excerpt,source_url,observed_at
+q1,Can I import a CSV file?,editor_inferred,owned,owned_article,answer_phrase_found,declared_phrase_check,CSV files can be imported.,CSV files can be imported.,https://example.com/owned-import-guide,2026-10-04T10:00:00Z
+q1,Can I import a CSV file?,editor_inferred,competing,competing_article,no_related_passage_found_in_selected_text,declared_phrase_check,,,https://example.com/competing-import-guide,2026-10-04T10:00:00Z
+q2,How do I check a failed import?,observed,owned,owned_article,no_related_passage_found_in_selected_text,declared_phrase_check,,,https://example.com/owned-import-guide,2026-10-04T10:00:00Z
+q2,How do I check a failed import?,observed,competing,competing_article,answer_phrase_found,declared_phrase_check,Inspect the import error log.,Inspect the import error log.,https://example.com/competing-import-guide,2026-10-04T10:00:00Z

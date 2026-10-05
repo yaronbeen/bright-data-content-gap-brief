@@ -1,0 +1,38 @@
+{
+  "schema_version": "1.0",
+  "project": "content-gap-brief",
+  "as_of": "2026-10-04T10:00:00Z",
+  "topic": "Choosing a project import method",
+  "reader_task": "Choose a safe way to move a small team's projects.",
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Can I import a CSV file?",
+      "origin": "editor_inferred",
+      "question_ref": null,
+      "related_phrases": ["CSV"],
+      "answer_phrases": ["CSV files can be imported."]
+    },
+    {
+      "id": "q2",
+      "text": "How do I check a failed import?",
+      "origin": "observed",
+      "question_ref": {"source_id": "competing", "block_id": "b0001", "quote": "How do I check a failed import?"},
+      "related_phrases": ["import error log"],
+      "answer_phrases": ["Inspect the import error log."]
+    }
+  ],
+  "criteria": [
+    {"id": "error_log", "question_id": "q2", "label": "Get a per-row error log.", "acceptance_check": "Verify the output identifies each rejected row.", "required": true},
+    {"id": "retry", "question_id": "q2", "label": "Retry only corrected rows.", "acceptance_check": "Verify corrected rows can be retried without duplicating successful rows.", "required": true}
+  ],
+  "worked_examples": [
+    {"label": "Team A", "scenario": "A synthetic import with one malformed date.", "has_criteria": ["error_log"], "provenance": "synthetic_operator_example"},
+    {"label": "Team B", "scenario": "A synthetic corrected-row retry.", "has_criteria": ["error_log", "retry"], "provenance": "synthetic_operator_example"}
+  ],
+  "coverage_overrides": [],
+  "sources": [
+    {"id": "owned", "kind": "page", "role": "owned_article", "url": "https://example.com/owned-import-guide", "title": "Owned import guide", "text": "## CSV import\n\nCSV files can be imported.", "status": "collected", "observed_at": "2026-10-04T10:00:00Z", "published_at": null, "provider_date": null, "record_id": null, "record_id_origin": "none", "provenance": "synthetic_fixture"},
+    {"id": "competing", "kind": "page", "role": "competing_article", "url": "https://example.com/competing-import-guide", "title": "Competing import guide", "text": "## How do I check a failed import?\n\nInspect the import error log.", "status": "collected", "observed_at": "2026-10-04T10:00:00Z", "published_at": null, "provider_date": null, "record_id": null, "record_id_origin": "none", "provenance": "synthetic_fixture"}
+  ]
+}

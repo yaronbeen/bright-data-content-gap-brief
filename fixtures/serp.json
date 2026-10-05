@@ -1,0 +1,6 @@
+{
+  "organic": [
+    {"rank": 1, "title": "Synthetic candidate", "link": "https://candidate.example.org/import-errors", "description": "A synthetic search snippet for candidate selection only."}
+  ],
+  "general": {"query": "project import error guide"}
+}

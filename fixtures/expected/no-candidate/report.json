@@ -1,0 +1,149 @@
+{
+  "analysis_method": "deterministic_rules_v1",
+  "brief": null,
+  "coverage": [
+    {
+      "coverage_method": "declared_phrase_check",
+      "coverage_state": "answer_phrase_found",
+      "evidence": [
+        {
+          "block_id": "b0002",
+          "quote": "CSV files can be imported.",
+          "source_id": "owned"
+        }
+      ],
+      "excerpt": "CSV files can be imported.",
+      "matched_answer_phrase": "CSV files can be imported.",
+      "observed_at": "2026-10-04T10:00:00Z",
+      "question": "Can I import a CSV file?",
+      "question_id": "q1",
+      "question_origin": "editor_inferred",
+      "question_ref": null,
+      "source_id": "owned",
+      "source_role": "owned_article",
+      "source_url": "https://example.com/owned-import-guide"
+    },
+    {
+      "coverage_method": "declared_phrase_check",
+      "coverage_state": "no_related_passage_found_in_selected_text",
+      "evidence": [],
+      "excerpt": "",
+      "matched_answer_phrase": null,
+      "observed_at": "2026-10-04T10:00:00Z",
+      "question": "Can I import a CSV file?",
+      "question_id": "q1",
+      "question_origin": "editor_inferred",
+      "question_ref": null,
+      "source_id": "competing",
+      "source_role": "competing_article",
+      "source_url": "https://example.com/competing-import-guide"
+    },
+    {
+      "coverage_method": "declared_phrase_check",
+      "coverage_state": "no_related_passage_found_in_selected_text",
+      "evidence": [],
+      "excerpt": "",
+      "matched_answer_phrase": null,
+      "observed_at": "2026-10-04T10:00:00Z",
+      "question": "How do I check a failed import?",
+      "question_id": "q2",
+      "question_origin": "observed",
+      "question_ref": {
+        "block_id": "b0001",
+        "quote": "How do I check a failed import?",
+        "source_id": "competing"
+      },
+      "source_id": "owned",
+      "source_role": "owned_article",
+      "source_url": "https://example.com/owned-import-guide"
+    },
+    {
+      "coverage_method": "declared_phrase_check",
+      "coverage_state": "answer_phrase_found",
+      "evidence": [
+        {
+          "block_id": "b0002",
+          "quote": "Inspect the import error log.",
+          "source_id": "competing"
+        }
+      ],
+      "excerpt": "Inspect the import error log.",
+      "matched_answer_phrase": "Inspect the import error log.",
+      "observed_at": "2026-10-04T10:00:00Z",
+      "question": "How do I check a failed import?",
+      "question_id": "q2",
+      "question_origin": "observed",
+      "question_ref": {
+        "block_id": "b0001",
+        "quote": "How do I check a failed import?",
+        "source_id": "competing"
+      },
+      "source_id": "competing",
+      "source_role": "competing_article",
+      "source_url": "https://example.com/competing-import-guide"
+    }
+  ],
+  "decision": "coverage_review_required",
+  "project": "content-gap-brief",
+  "review_question_ids": [
+    "q2"
+  ],
+  "schema_version": "1.0",
+  "scope": {
+    "as_of": "2026-10-04T10:00:00Z",
+    "reader_task": "Choose a safe way to move a small team's projects.",
+    "source_ids": [
+      "owned",
+      "competing"
+    ],
+    "source_roles": [
+      "owned_article",
+      "competing_article"
+    ],
+    "topic": "Choosing a project import method"
+  },
+  "source_index": [
+    {
+      "content_sha256": "c7de2b2546dafe9cfb3f828396f0303ba7eed120b7eb20a2c721d13af8a59cc1",
+      "id": "owned",
+      "kind": "page",
+      "observed_at": "2026-10-04T10:00:00Z",
+      "provenance": "synthetic_fixture",
+      "provider_date": null,
+      "published_at": null,
+      "record_id": null,
+      "record_id_origin": "none",
+      "role": "owned_article",
+      "status": "collected",
+      "url": "https://example.com/owned-import-guide"
+    },
+    {
+      "content_sha256": "bf962028f5f240875d00ec1e128912c763605764a88e2dece52efdf792362c70",
+      "id": "competing",
+      "kind": "page",
+      "observed_at": "2026-10-04T10:00:00Z",
+      "provenance": "synthetic_fixture",
+      "provider_date": null,
+      "published_at": null,
+      "record_id": null,
+      "record_id_origin": "none",
+      "role": "competing_article",
+      "status": "collected",
+      "url": "https://example.com/competing-import-guide"
+    }
+  ],
+  "status": "needs_review",
+  "summary": {
+    "briefs_created": 0,
+    "coverage_rows": 4,
+    "questions_analyzed": 2,
+    "review_questions": 1,
+    "sources_analyzed": 2,
+    "sources_excluded": 0,
+    "suppressed_questions": 1
+  },
+  "suppressed_question_ids": [
+    "q1"
+  ],
+  "warnings": []
+}
