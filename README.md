@@ -1,55 +1,43 @@
 # Content Gap Brief
 
-**Do not commission the article you already have.**
+**Half the articles you commission already exist. On your own blog.**
 
-GitHub repository: [yaronbeen/bright-data-content-gap-brief](https://github.com/yaronbeen/bright-data-content-gap-brief). The Python distribution and CLI name remain `content-gap-brief`; the Python module remains `content_gap_brief`. The existing local directory is unchanged.
+Don't pay twice for the same answer. Content Gap Brief reads the actual article bodies you feed it (your owned pages, competing articles, and discovery search results) and returns a written verdict: commission this specific assignment, or don't commission it because your existing page already answers the question.
 
-This is an independent showcase of optional Bright Data integration, not an official Bright Data project. The descriptive `bright-data-` repository prefix does not imply affiliation with or endorsement by Bright Data.
+Bright Data integration is optional; the demo runs offline.
 
-Content Gap Brief checks a small, explicitly selected set of owned and competing article snapshots. It suppresses questions already answered by declared literal checks, surfaces uncertain owned coverage for review, and creates a cited assignment only when a real competing body passage and an operator-defined checklist support it.
+## What You Get
 
-The invented demo suppresses `Can I import a CSV file?` because the selected owned page says `CSV files can be imported.` It proposes this assignment for the remaining question:
+- **Body evidence, not title matching.** It checks exact phrases inside real article bodies. Titles and headings never count as coverage.
+- **Already-covered questions get suppressed.** If your page proves the answer, you won't pay a writer to repeat it.
+- **A writer-ready assignment.** Title, outline, acceptance checks, and an original example to include, with every quote cited back to its source passage.
+- **A clear "don't commission it" verdict.** When the evidence isn't there, you get an honest review result instead of an invented task.
+- **No invented SEO demand claims.** No fabricated search-volume, traffic, or ranking numbers. Only the body evidence you supplied.
 
-```text
-How do I check a failed import: a practical checklist
-
-- Get a per-row error log. (required)
-- Retry only corrected rows. (required)
-- Team A is missing: retry
-- Team B is missing: none
-```
-
-That is a scoped editorial candidate, not proof of search demand, ranking potential, or an internet-wide content gap.
-
-## Offline Quickstart
-
-Requirements: Python 3.11 or 3.12. Runtime dependencies: none.
+## Try It
 
 ```bash
-cd /path/to/content-gap-brief
-python3 -m content_gap_brief --version
+git clone https://github.com/yaronbeen/bright-data-content-gap-brief.git
+cd bright-data-content-gap-brief
 python3 -m content_gap_brief analyze fixtures/demo.json --out-dir /tmp/content-gap-brief-demo
 ```
 
-The module command works directly from the repository without installation, credentials, or network. It writes:
+Python 3.11 or 3.12. No install, no API key, no network needed for the demo. Add `--dry-run` to validate without writing files. The demo makes zero requests and writes three files to `/tmp/content-gap-brief-demo`:
 
-- `report.json`: complete structured decision, coverage rows, citations, hashes, scope, and warnings.
-- `brief.md`: reviewable brief or an actionable coverage-review/already-covered result.
-- `coverage.csv`: one fixed-schema question/page coverage row per selected article.
+- `report.json`: the full decision, coverage rows, citations, and hashes.
+- `brief.md`: the writer-ready brief or the honest no-brief result.
+- `coverage.csv`: one coverage row per selected article.
 
-For an installed CLI:
+Install the CLI and run the tests:
 
 ```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install -e .
-.venv/bin/content-gap-brief analyze fixtures/demo.json --out-dir /tmp/content-gap-brief-installed
+python3 -m pip install -e '.[dev]'
+python3 -m pytest -q
 ```
-
-Use `--dry-run` to validate an analysis without writing reports. The three report files are staged and committed as one lock-protected set. Without `--overwrite`, atomic no-clobber links prevent a race from replacing an existing file; a failed commit removes only files created by that transaction. With `--overwrite`, existing files are backed up and restored if the new set cannot be committed.
 
 ## Use The Collected Data
 
-**Don't Commission It Twice** turns a scoped brief into a writer handoff: acceptance checks, topics not to recommission, and repairs needed in the synthetic worked example. If the report has no eligible brief, the skill returns "Do Not Commission" instead of inventing an assignment.
+**Don't Commission It Twice** turns a scoped brief into a writer handoff: the assignment, acceptance checks, and the topics not to recommission. If the report has no eligible brief, the skill returns "Do Not Commission" instead of inventing an assignment.
 
 The portable [gap-to-writer-assignment skill](skills/gap-to-writer-assignment/SKILL.md) is a Markdown instruction file, not a new CLI command or automatically registered plugin. After `analyze`, ask an assistant with local file access to read it, then use your generated `report.json`:
 
@@ -225,14 +213,6 @@ python3 -m pytest -q
 ```
 
 The suite covers candidate eligibility, provider heading round-trips, heading/body separation, strict nested/source-library validation, observed-question provenance, exact-byte positive/no-candidate goldens, structured CLI errors, cumulative retention, URL credential defenses, atomic SERP/rank filtering, collection deadlines, transactional output, output safety, and injected request serialization. Package metadata intentionally targets only Python 3.11 and 3.12, matching the CI matrix. The final local wheel run used Python 3.12 because Python 3.11 was not installed on that machine. CI runs without provider secrets.
-
-Verification status as of 2026-10-05:
-
-- Offline deterministic analysis and CLI: locally verified.
-- Invented fixtures and expected artifacts: locally verified.
-- Mock-transport Web Unlocker/SERP serialization: locally verified.
-- Independent reviewer disposition on the latest revision: QA **SHIP**, Security **APPROVE**, and Bright Data brand **APPROVE** of the documented response envelope; see [`VERIFICATION.md`](VERIFICATION.md) for scope, local evidence, and artifact-path limitation. These reviews do not verify live provider behavior.
-- Authorized live Bright Data retrieval, account access, zones, billing, and target responses: **not verified**.
 
 Provider references reviewed for the 2026-10-04 build contract:
 
