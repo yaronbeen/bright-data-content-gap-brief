@@ -1,5 +1,20 @@
 # Learnings
 
+## Current Skills-Only Workflow - 2026-10-06
+
+- The user explicitly retired the Python product in favor of one simple Bright Data-backed business skill. Historical application decisions below are not current operating instructions.
+- Source evidence must be retrieved through configured Bright Data tools in the current agent session. Missing access means connect and stop, not use an export, mock, or another provider.
+- Coverage comparison is semantic: differently worded answers can count, while a heading or keyword alone cannot. Missing/truncated bodies require review, not a no-commission verdict.
+- The pre-existing local correction in the retired validation document was preserved byte-for-byte at `/home/yaron/.claude/data/brightdata-drafts/2026-10-06-content-gap-validation-preserved.md`; SHA-256 `43bb63a8eb77f008dd07a9083a94fe5cf181f16e0dd5ff1d9857db39f5bf2b63`. It is historical evidence, not a dependency of the current skill.
+- Official MCP setup and tools documentation was fetched on 2026-10-06. `chub` was unavailable, so current official pages were read directly. Static documentation checks do not establish live functionality.
+
+- Independent real-data exercise: PARTIAL. An empty search discovered no candidate URLs; genuinely collected directly selected pages can still support a scoped comparison, but must not be labeled search discoveries.
+- Check where truncation occurs: an incomplete footer/widget does not erase body evidence; incomplete relevant article sections block absence claims. Older articles support editorial comparison, not verified current product instructions. Capture instants/timezones remain unknown where not supplied or observed.
+- External evidence remains at `/home/yaron/.claude/data/brightdata-drafts/2026-10-06-brightdata-real-business-validation.md`. The public validation business is not the user's business. No source excerpts or dataset were copied into the repository, and no calls were repeated for the rule clarification.
+- 2026-10-07: Release approval, static documentation validation, and public-byte verification are separate from live branch coverage. The user reports all three reviewers APPROVE for publication; the empty-search discovery outcome remains PARTIAL, not a fabricated search success or a newly validated branch.
+
+## Historical Application Learnings
+
 - Heading blocks must stay distinct from body blocks. A phrase in a source title or Markdown heading cannot establish article-body coverage or competing fit.
 - A scoped gap is not automatically brief-worthy. It additionally needs at least one assigned criterion and a real competing body passage.
 - Literal answer phrases are operator-declared checks, not semantic understanding. Related-only owned evidence stays unresolved unless an exact, hash-bound override resolves it.

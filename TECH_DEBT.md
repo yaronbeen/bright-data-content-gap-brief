@@ -2,22 +2,27 @@
 
 ## P0 (Next Session)
 
-- None. Latest-revision reviewer dispositions dated 2026-10-05 are recorded in `/home/yaron/projects/bright-data-content-gap-brief/VERIFICATION.md`; live provider behavior and publication authorization remain separate, unverified matters.
+- None. On 2026-10-07, the user reported APPROVE from all three top-level reviewers and authorized publication of this repository's approved skills-only conversion to its existing public `main`. This authorization does not cover further collection, other repositories, or private evidence.
 
 ## P1 (This Week)
 
-- Add broader recording-transport tests for every failure header and redirect behavior before calling the live adapter verified.
-- Confirm the selected raw Web Unlocker response contract with an explicitly authorized, budgeted smoke test.
+- The external discovery-to-candidate branch remains PARTIAL after an empty search. The directly selected, actually collected body comparison is useful but not search-discovery validation. Do not repeat the search during conversion or invent discovered candidates; further collection requires new authorization.
 
 ## P2 (When Convenient)
 
-- Add property-based validation tests if the runtime dependency policy changes.
+- None for the small skills-only scope.
 
 ## P3 (Nice To Have)
 
-- Add richer operator guidance for authoring narrow answer phrases without implying semantic coverage.
+- None. Do not reintroduce an application, mock datasets, or a report schema.
 
 ## Resolved Items
+
+- 2026-10-07: Resolved the skills-only release-review gate using the user's report of all three reviewers' APPROVE and explicit publication authorization. Preserve the real-data PARTIAL result and the external correction backup; verify remote identity, current-tree inventory, and anonymous product bytes after pushing.
+
+- 2026-10-06: Received the independent bounded real-data content result (PARTIAL), clarified empty-search/direct-selection/truncation/date rules without new collection, and kept all source evidence external at `/home/yaron/.claude/data/brightdata-drafts/2026-10-06-brightdata-real-business-validation.md`. Top-level release review remains separate.
+
+- 2026-10-06: Retired application-specific debt with the explicitly authorized retirement of the Python product, synthetic fixtures, release records, and Python CI. Historical resolutions below remain as history, not current run instructions. Preserved the earlier validation correction outside the public tree before retiring that document; see `/home/yaron/projects/bright-data-content-gap-brief/LEARNINGS.md`. Git history and private ignored local files are preserved.
 
 - 2026-10-05: Implemented the deterministic candidate eligibility contract and offline CLI artifacts.
 - 2026-10-05: Added cumulative retention enforcement, normalized URL credential rejection/redaction, atomic SERP/rank normalization, 50,000-character page limits, monotonic deadlines, and transactional report output.
