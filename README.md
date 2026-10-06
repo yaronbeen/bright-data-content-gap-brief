@@ -4,7 +4,7 @@
 
 Don't pay twice for the same answer. Content Gap Brief reads the actual article bodies you feed it (your owned pages, competing articles, and discovery search results) and returns a written verdict: commission this specific assignment, or don't commission it because your existing page already answers the question.
 
-Bright Data integration is optional; the demo runs offline.
+[Bright Data](https://brightdata.com) integration is optional; the demo runs offline.
 
 ## What You Get
 
@@ -17,12 +17,10 @@ Bright Data integration is optional; the demo runs offline.
 ## Try It
 
 ```bash
-git clone https://github.com/yaronbeen/bright-data-content-gap-brief.git
-cd bright-data-content-gap-brief
 python3 -m content_gap_brief analyze fixtures/demo.json --out-dir /tmp/content-gap-brief-demo
 ```
 
-Python 3.11 or 3.12. No install, no API key, no network needed for the demo. Add `--dry-run` to validate without writing files. The demo makes zero requests and writes three files to `/tmp/content-gap-brief-demo`:
+No install, no API key, no network needed for the demo. Add `--dry-run` to validate without writing files. The demo makes zero requests and writes three files to `/tmp/content-gap-brief-demo`:
 
 - `report.json`: the full decision, coverage rows, citations, and hashes.
 - `brief.md`: the writer-ready brief or the honest no-brief result.
@@ -91,9 +89,9 @@ Observed questions retain their original `question_ref` in every coverage row an
 
 If an owned page contains only `Open the import error log`, the tool labels that row `related_passage_only`. Without a valid override, the question remains in `review_question_ids` and no brief is generated. This is intentionally different from claiming the selected page does not answer the question.
 
-## Optional Bright Data Ingestion
+## Optional [Bright Data](https://brightdata.com) Ingestion
 
-Bright Data is optional. Offline analysis and provider-export import never read credentials or make network requests.
+[Bright Data](https://brightdata.com) is optional. Offline analysis and provider-export import never read credentials or make network requests.
 
 Supported retrieval is deliberately narrow:
 
@@ -212,7 +210,7 @@ The nearest adjacent concept is a generic content-gap/topic finder. This project
 python3 -m pytest -q
 ```
 
-The suite covers candidate eligibility, provider heading round-trips, heading/body separation, strict nested/source-library validation, observed-question provenance, exact-byte positive/no-candidate goldens, structured CLI errors, cumulative retention, URL credential defenses, atomic SERP/rank filtering, collection deadlines, transactional output, output safety, and injected request serialization. Package metadata intentionally targets only Python 3.11 and 3.12, matching the CI matrix. The final local wheel run used Python 3.12 because Python 3.11 was not installed on that machine. CI runs without provider secrets.
+The suite covers candidate eligibility, provider heading round-trips, heading/body separation, strict nested/source-library validation, observed-question provenance, exact-byte positive/no-candidate goldens, structured CLI errors, cumulative retention, URL credential defenses, atomic SERP/rank filtering, collection deadlines, transactional output, output safety, and injected request serialization. CI runs without provider secrets.
 
 Provider references reviewed for the 2026-10-04 build contract:
 
@@ -223,6 +221,6 @@ If live collection fails, inspect only the safe receipt code. Do not retry a tim
 
 ## Attribution
 
-Uses Bright Data for optional public-data retrieval. Analysis and decisions are local application logic. Not affiliated with or endorsed by Bright Data.
+Uses [Bright Data](https://brightdata.com) for optional public-data retrieval. Analysis and decisions are local application logic. Not affiliated with or endorsed by [Bright Data](https://brightdata.com).
 
 License: MIT for project code and invented fixtures. It does not grant rights to third-party source content.
