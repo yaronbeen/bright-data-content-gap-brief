@@ -1,26 +1,30 @@
 # Content Gap Brief
 
-**Half the articles you commission already exist. On your own blog.**
+**Find out whether your site already answers the question before commissioning another article.**
 
-Don't pay twice for the same answer. Bright Data collects search results for discovery and the article pages you select. Content Gap Brief compares actual article-body evidence from those pages against your owned content, then returns a writer assignment or a no-commission verdict when your existing page already answers the question.
+Use this prompt with an agent that has configured Bright Data MCP/API tools and access to this skill:
 
-The offline demo is a quick try with invented fixture data. The working collection flow uses Bright Data's SERP API and Web Unlocker; you can also import existing provider exports.
+> For [question], use one bounded Bright Data SERP query and one result page to select at most three relevant competing pages. Collect their article bodies and the page at [your owned article URL] with Bright Data Web Unlocker, then use gap-to-writer-assignment. If configured Bright Data tools are unavailable, ask me for Bright Data exports instead. Return **Do Not Commission** only when the coverage gate supports that decision. If coverage evidence is incomplete, unavailable, or unclear, return `coverage_review_required` / `needs_review` with a needs-review handoff listing the missing evidence; do not turn uncertainty into a categorical no-commission verdict. Otherwise, give one cited assignment when the assignment gate is met.
+
+Bright Data is the retrieval source: discover with a bounded SERP query, select relevant URLs, then collect those pages and your owned page with Web Unlocker. The supported live route is Bright Data SERP API followed by Web Unlocker for selected URLs. The bundled `gap-to-writer-assignment` skill turns the collected body evidence into one cited assignment, a supported no-commission decision, or a needs-review handoff. If Bright Data MCP is unavailable, ask for the Bright Data exports; do not silently switch retrieval sources.
+
+The offline demo uses invented fixture data and is only a preview. CLI commands are secondary tools for replaying supported collection or importing content already collected by a provider.
 
 ## What You Get
 
 - **Body evidence, not title matching.** It checks exact phrases inside real article bodies. Titles and headings never count as coverage.
 - **Already-covered questions get suppressed.** If your page proves the answer, you won't pay a writer to repeat it.
 - **A writer-ready assignment.** Title, outline, acceptance checks, and an original example to include, with every quote cited back to its source passage.
-- **A clear "don't commission it" verdict.** When the evidence isn't there, you get an honest review result instead of an invented task.
+- **An evidence-matched outcome.** Supported owned-page coverage gets a "don't commission it" verdict; incomplete, unavailable, or unclear evidence gets a needs-review handoff instead of an invented task or categorical verdict.
 - **No invented SEO demand claims.** No fabricated search-volume, traffic, or ranking numbers. Only the body evidence you supplied.
 
-## Try It
+## Preview Offline
 
 ```bash
 python3 -m content_gap_brief analyze fixtures/demo.json --out-dir /tmp/content-gap-brief-demo
 ```
 
-No install, no API key, no network needed for this quick demo. Add `--dry-run` to validate without writing files. It makes zero requests and writes three files to `/tmp/content-gap-brief-demo`:
+No install, no API key, no network needed for this fixture preview. Add `--dry-run` to validate without writing files. It makes zero requests and writes three files to `/tmp/content-gap-brief-demo`:
 
 - `report.json`: the full decision, coverage rows, citations, and hashes.
 - `brief.md`: the writer-ready brief or the honest no-brief result.
@@ -35,9 +39,9 @@ python3 -m pytest -q
 
 ## Use The Collected Data
 
-**Don't Commission It Twice** turns a scoped brief into a writer handoff: the assignment, acceptance checks, and the topics not to recommission. If the report has no eligible brief, the skill returns "Do Not Commission" instead of inventing an assignment.
+**Don't Commission It Twice** turns a scoped brief into a writer handoff: the assignment, acceptance checks, and the topics not to recommission. If supported owned-page evidence shows the answer is already covered, the skill returns "Do Not Commission." If evidence is incomplete, unavailable, or unclear, it returns `coverage_review_required` / `needs_review` with the missing evidence instead of inventing an assignment or a categorical verdict.
 
-The portable [gap-to-writer-assignment skill](skills/gap-to-writer-assignment/SKILL.md) is a Markdown instruction file, not a new CLI command or automatically registered plugin. After `analyze`, ask an assistant with local file access to read it, then use your generated `report.json`:
+The portable [gap-to-writer-assignment skill](skills/gap-to-writer-assignment/SKILL.md) is a Markdown instruction file, not a new CLI command or automatically registered plugin. An agent should collect with Bright Data first, then use this skill to evaluate the resulting article bodies and produce an assignment, supported no-commission decision, or needs-review handoff. For replaying an already-created report, an assistant with local file access can read the skill and use `report.json`:
 
 ```text
 Follow the bundled gap-to-writer-assignment SKILL.md.
@@ -232,6 +236,6 @@ If live collection fails, inspect only the safe receipt code. Do not retry a tim
 
 ## Attribution
 
-Uses [Bright Data](https://brightdata.com) SERP API and Web Unlocker for selected public-data collection. Analysis and decisions are local application logic. Not affiliated with or endorsed by [Bright Data](https://brightdata.com).
+Uses [Bright Data](https://brightdata.com) SERP API and Web Unlocker for selected public-data collection. CLI analysis and decisions are local application logic; the bundled skill uses the same evidence gates to produce a writer handoff. Not affiliated with or endorsed by [Bright Data](https://brightdata.com).
 
 License: MIT for project code and invented fixtures. It does not grant rights to third-party source content.
