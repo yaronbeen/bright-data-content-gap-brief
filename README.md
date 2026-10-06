@@ -2,9 +2,9 @@
 
 **Half the articles you commission already exist. On your own blog.**
 
-Don't pay twice for the same answer. Content Gap Brief reads the actual article bodies you feed it (your owned pages, competing articles, and discovery search results) and returns a written verdict: commission this specific assignment, or don't commission it because your existing page already answers the question.
+Don't pay twice for the same answer. Bright Data collects search results for discovery and the article pages you select. Content Gap Brief compares actual article-body evidence from those pages against your owned content, then returns a writer assignment or a no-commission verdict when your existing page already answers the question.
 
-[Bright Data](https://brightdata.com) integration is optional; the demo runs offline.
+The offline demo is a quick try with invented fixture data. The working collection flow uses Bright Data's SERP API and Web Unlocker; you can also import existing provider exports.
 
 ## What You Get
 
@@ -20,7 +20,7 @@ Don't pay twice for the same answer. Content Gap Brief reads the actual article 
 python3 -m content_gap_brief analyze fixtures/demo.json --out-dir /tmp/content-gap-brief-demo
 ```
 
-No install, no API key, no network needed for the demo. Add `--dry-run` to validate without writing files. The demo makes zero requests and writes three files to `/tmp/content-gap-brief-demo`:
+No install, no API key, no network needed for this quick demo. Add `--dry-run` to validate without writing files. It makes zero requests and writes three files to `/tmp/content-gap-brief-demo`:
 
 - `report.json`: the full decision, coverage rows, citations, and hashes.
 - `brief.md`: the writer-ready brief or the honest no-brief result.
@@ -89,9 +89,9 @@ Observed questions retain their original `question_ref` in every coverage row an
 
 If an owned page contains only `Open the import error log`, the tool labels that row `related_passage_only`. Without a valid override, the question remains in `review_question_ids` and no brief is generated. This is intentionally different from claiming the selected page does not answer the question.
 
-## Optional [Bright Data](https://brightdata.com) Ingestion
+## Bright Data Collection And Import
 
-[Bright Data](https://brightdata.com) is optional. Offline analysis and provider-export import never read credentials or make network requests.
+[Bright Data](https://brightdata.com) is the collection path: SERP API finds discovery results, and Web Unlocker retrieves individually selected owned or competing article pages. Content Gap Brief compares those selected body snapshots against your owned content. Search snippets support discovery only; they do not stand in for article bodies. The separate offline demo above is only a quick try, and provider-export import is available when data has already been collected.
 
 Supported retrieval is deliberately narrow:
 
@@ -167,6 +167,17 @@ content-gap-brief collect manifest.json --out private/library.json \
   --live --accept-charges --approval private/approval.json
 ```
 
+The live route is `collect` to create a source library, followed by `analyze --sources` to compare it with the input's questions and owned-content criteria:
+
+```bash
+content-gap-brief collect manifest.json --out private/library.json \
+  --live --accept-charges --approval private/approval.json
+content-gap-brief analyze brief-input.json --sources private/library.json \
+  --out-dir private/report
+```
+
+For an existing authorized export, `import-provider` writes the same source-library format without network access; pass that file to `analyze --sources` in the same way. Collection and import provide selected snapshots, not an exhaustive web or keyword-demand assessment. The report's assignment/no-commission decision is based on the supplied article-body evidence and declared checks.
+
 The approval binds the exact canonical manifest hash, approved URLs, expiry, local request/retention caps, budget confirmation, target-permission confirmation, and remote-resolution risk acknowledgement. The private approval keeps the exact hash and exact approved URLs. Console plans, collection job receipts, and analysis reports redact query values. Credential-bearing query keys are rejected after percent decoding, Unicode normalization, and separator removal.
 
 Live Web Unlocker page targets reject every query string, not only known credential names. Provider page imports also reject query-bearing source URLs, and SERP result URLs with any query string are excluded before they enter an imported or collected source library. SERP query URLs are used only to make the approved discovery request; the query URL itself is not persisted as a source. Select query-free canonical page/result URLs before retaining them. SERP queries are generated locally for the pinned Google endpoint and are never promoted into destination fetches.
@@ -221,6 +232,6 @@ If live collection fails, inspect only the safe receipt code. Do not retry a tim
 
 ## Attribution
 
-Uses [Bright Data](https://brightdata.com) for optional public-data retrieval. Analysis and decisions are local application logic. Not affiliated with or endorsed by [Bright Data](https://brightdata.com).
+Uses [Bright Data](https://brightdata.com) SERP API and Web Unlocker for selected public-data collection. Analysis and decisions are local application logic. Not affiliated with or endorsed by [Bright Data](https://brightdata.com).
 
 License: MIT for project code and invented fixtures. It does not grant rights to third-party source content.
