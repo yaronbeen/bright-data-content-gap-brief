@@ -489,7 +489,7 @@ def test_atomic_single_file_no_clobber_survives_destination_race(tmp_path, monke
 
 
 def test_readme_examples_exit_codes_synthetic_export_and_canonical_docs():
-    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    readme = (ROOT / "docs" / "technical-guide.md").read_text(encoding="utf-8")
     blocks = [json.loads(value) for value in __import__("re").findall(r"```json\n(.*?)\n```", readme, __import__("re").S)]
     manifest, approval = blocks[0], blocks[1]
     planned = plan(manifest)
